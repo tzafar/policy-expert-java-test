@@ -1,7 +1,6 @@
 package kata.supermarket.discount;
 
 import kata.supermarket.Basket;
-import kata.supermarket.Item;
 import kata.supermarket.ItemByUnit;
 import kata.supermarket.Product;
 import org.junit.jupiter.api.AfterEach;
@@ -11,21 +10,18 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BuyOneGetOneShould {
+public class BasketIntegrationTest {
     public static final ItemByUnit snickers = new ItemByUnit(new Product(new BigDecimal("2.22")));
     public static final ItemByUnit mars = new ItemByUnit(new Product(new BigDecimal("2.00")));
-    private final List<Item> items = new ArrayList<>();
     private final ProductDiscountRepository productDiscountRepository = new ProductDiscountRepository(new ArrayList<>());
     private final DiscountCalculator discountCalculator = new DiscountCalculator(productDiscountRepository);
     private final Basket basket = new Basket(discountCalculator);
 
     @AfterEach
     void setUp() {
-      items.clear();
       productDiscountRepository.getProductDiscountsList().clear();
     }
 
